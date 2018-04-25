@@ -16,6 +16,7 @@ import org.jline.terminal.TerminalBuilder;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -107,7 +108,7 @@ public class BashPlugin implements MCCommandFactory {
                     OplistPlugin.class,
                     oplistPlugin -> oplistAtomicReference.set(oplistPlugin.getOplist())
             );
-            return new BashPlugin(oplistAtomicReference.get());
+            return new BashPlugin(Objects.requireNonNull(oplistAtomicReference.get()));
         }
     }
 }
